@@ -1,0 +1,14 @@
+{
+  "require": {
+      "chrisboulton/php-resque": "dev-master",
+			"fzaninotto/faker": "1.1.*@dev",
+			"zendframework/zend-mail": "2.1.5",
+			"aws/aws-sdk-php": "2.*",
+			"evert/sitemap-php": "dev-master",
+			"dbtlr/php-airbrake": "dev-master"
+  },
+  "require-dev": {
+  	"phpunit/phpunit": "*@stable",
+    "chriskite/phactory": "dev-next"
+	}
+}

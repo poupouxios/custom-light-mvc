@@ -1,0 +1,21 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  collation: utf8_general_ci
+  reconnect: false
+  database: lightmvc
+  pool: 5
+  username: lightmvc
+  password: password
+  socket: /var/run/mysqld/mysqld.sock
+
+testing:
+  adapter: mysql2
+  encoding: utf8
+  collation: utf8_general_ci
+  reconnect: false
+  database: lightmvc-testing
+  pool: 5
+  username: lightmvc-testing
+  password: "password"
+  socket: /var/run/mysqld/mysqld.sock

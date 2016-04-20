@@ -1,0 +1,6 @@
+Gemfile.lock
+composer.lock
+vendor/
+node_modules/
+public/css/style.min.css
+.vagrant

@@ -1,0 +1,45 @@
+<div class="row bottom-buffer">
+	<div class="col-sm-12">
+		<?php if(property_exists($this,"message")): ?>
+			<div class="alert alert-success">
+				<?= $this->message ?>
+			</div>
+		<?php endif; ?>
+		<form class="form-signin" action="/user/add" method="post">
+      <h2 class="form-signin-heading">Add User</h2>
+
+			<div class="form-group">
+		    <label for="title">Title</label>
+				<select name="title" class="form-control">
+					<option value="Mr" selected>Mr</option>
+					<option value="Mrs">Mrs</option>
+					<option value="Miss">Miss</option>
+					<option value="Sir">Sir</option>
+					<option value="Lord">Lord</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+		    <label for="firstname">First name</label>
+		    <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First name" required="" autofocus="">
+			</div>
+
+			<div class="form-group">
+		    <label for="surname">Surname</label>
+		    <input type="text" id="surname" name="surname" class="form-control" placeholder="Surname" required="" autofocus="">
+			</div>
+
+			<div class="form-group">
+		    <label for="telephone">Telephone</label>
+		    <input type="number" id="telephone" name="telephone" class="form-control" placeholder="Telephone" required="" autofocus="">
+			</div>
+
+			<div class="form-group">
+		    <label for="email">Email</label>
+		    <input type="email" id="email" name="email" class="form-control" placeholder="Email" required="" autofocus="">
+			</div>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+    </form>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="col-sm-12">
+		<h1>Expenses</h1>
+		<p>
+			<a class="btn btn-info" href="/expense/add">Add Expense</a>
+		</p>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<?php foreach($this->attributes as $attribute): ?>
+						<th><?= $attribute ?></th>
+					<?php endforeach; ?>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($this->expenses as $expense): ?>
+					<tr>
+						<td><?= $expense->id ?></td>
+						<td><?= $expense->value ?></td>
+						<td><?= $expense->comment ?></td>
+						<td><?php
+							$user = UserModel::getMapper()->findOneBy("id",$expense->user_id);
+							if($user){
+								echo "<a href='/user/edit/".$expense->user_id."' title='".$user->firstname." ".$user->surname."'>".$user->firstname." ".$user->surname."</a>";
+							}
+						?></td>
+						<td><?= $expense->created_at ?></td>
+						<td><?= $expense->updated_at ?></td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+</div>
