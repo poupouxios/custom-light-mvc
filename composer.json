@@ -1,14 +1,17 @@
 {
   "require": {
-      "chrisboulton/php-resque": "dev-master",
-			"fzaninotto/faker": "1.1.*@dev",
-			"zendframework/zend-mail": "2.1.5",
-			"aws/aws-sdk-php": "2.*",
-			"evert/sitemap-php": "dev-master",
-			"dbtlr/php-airbrake": "dev-master"
+    "fzaninotto/faker": "1.*@dev",
+		"dbtlr/php-airbrake": "dev-master"
   },
   "require-dev": {
   	"phpunit/phpunit": "*@stable",
-    "chriskite/phactory": "dev-next"
-	}
+     "chriskite/phactory": "dev-next",
+    "behat/behat": "2.5.*@stable",
+    "behat/mink": "1.*@stable",
+		"behat/symfony2-extension":      "*",
+    "behat/mink-extension":          "*",
+    "behat/mink-selenium2-driver":   "*",
+    "behat/mink-goutte-driver": "1.0.9"
+  }
+
 }

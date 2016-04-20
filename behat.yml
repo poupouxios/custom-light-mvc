@@ -1,0 +1,16 @@
+default:
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://192.168.69.95:81
+            default_session: selenium2 
+            javascript_session: selenium
+            goutte: ~
+            selenium2:
+              wd_host: "http://192.168.69.95:8643"
+
+    formatter:
+        name:               pretty,html
+        parameters:
+            output_path:    null,behat_log.html
+    filters:
+      tags: "~@wip"

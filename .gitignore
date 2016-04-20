@@ -4,3 +4,5 @@ vendor/
 node_modules/
 public/css/style.min.css
 .vagrant
+db/lightmvc-testing.sql
+behat_log.html
