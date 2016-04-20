@@ -47,6 +47,13 @@ class UserController extends BaseController{
 		return $this->view->getContentView("user/delete.phtml");
 	}
 
+	public function statistics($id){
+		$this->view->user = UserModel::getMapper()->findOneBy("id",intval($id));
+		$this->view->user_expenses = ExpenseModel::getMapper()->findAllExpensesByUserId(intval($id));
+		$this->view->user_savings = SavingModel::getMapper()->findAllSavingsByUserId(intval($id));
+		return $this->view->getContentView("user/statistics.phtml");
+	}
+
 	public function view(){
 		$this->view->attributes = array_keys(UserModel::$attributes);
 		$this->view->users = UserModel::getMapper()->findAll();

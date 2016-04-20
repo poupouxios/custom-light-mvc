@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-sm-12">
+		<?php if(strlen($this->warningmessage) > 0): ?>
+			<div class="alert alert-danger">
+				<?= $this->warningmessage ?>
+			</div>
+		<?php endif; ?>
+		<?php if($this->saving): ?>
+			<h1>Are you sure you want to delete Saving with ID <?= $this->saving->id ?>?</h1>
+			<form class="form-signin" action="/saving/successDelete/<?= $this->saving->id ?>" method="post">
+				<button class="btn btn-primary"  type="submit">Yes</button>
+				<a class="btn btn-primary" href="/saving/view">No</a>
+			</form>
+		<?php endif; ?>
+	</div>
+</div>

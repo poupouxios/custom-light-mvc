@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420195513) do
+ActiveRecord::Schema.define(version: 20160420213638) do
 
   create_table "expenses", force: :cascade do |t|
     t.integer  "user_id",       limit: 4
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20160420195513) do
     t.datetime "updated_at"
   end
 
+  create_table "savings", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.float    "saving_value", limit: 24
+    t.text     "comment",      limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "savings", ["user_id"], name: "index_savings_on_user_id", using: :btree
+
   create_table "seed_migrations", force: :cascade do |t|
     t.string   "class_name", limit: 255
     t.datetime "created_at"
@@ -38,13 +48,14 @@ ActiveRecord::Schema.define(version: 20160420195513) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.string   "firstname",  limit: 255
-    t.string   "surname",    limit: 255
-    t.string   "telephone",  limit: 255
-    t.string   "email",      limit: 255
+    t.string   "title",         limit: 255
+    t.string   "firstname",     limit: 255
+    t.string   "surname",       limit: 255
+    t.string   "telephone",     limit: 255
+    t.string   "email",         limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "initial_value", limit: 24
   end
 
 end

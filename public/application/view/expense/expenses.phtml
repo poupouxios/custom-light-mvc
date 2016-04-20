@@ -22,7 +22,7 @@
 						<td><?php
 							$user = UserModel::getMapper()->findOneBy("id",$expense->user_id);
 							if($user){
-								echo "<a href='/user/edit/".$expense->user_id."' title='".$user->firstname." ".$user->surname."'>".$user->firstname." ".$user->surname."</a>";
+								echo "<a href='/user/statistics/".$expense->user_id."' title='".$user->firstname." ".$user->surname."'>".$user->firstname." ".$user->surname."</a>";
 							}
 						?></td>
 						<td><?= $expense->created_at ?></td>

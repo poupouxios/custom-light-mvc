@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-sm-12">
+		<h1>Savings</h1>
+		<p>
+			<a class="btn btn-success" href="/saving/add">Add Saving</a>
+		</p>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<?php foreach($this->attributes as $attribute): ?>
+						<th><?= $attribute ?></th>
+					<?php endforeach; ?>
+						<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($this->savings as $saving): ?>
+					<tr>
+						<td><?= $saving->id ?></td>
+						<td>&euro;<?= number_format($saving->saving_value,2) ?></td>
+						<td><?= $saving->comment ?></td>
+						<td><?php
+							$user = UserModel::getMapper()->findOneBy("id",$saving->user_id);
+							if($user){
+								echo "<a href='/user/statistics/".$saving->user_id."' title='".$user->firstname." ".$user->surname."'>".$user->firstname." ".$user->surname."</a>";
+							}
+						?></td>
+						<td><?= $saving->created_at ?></td>
+						<td><?= $saving->updated_at ?></td>
+						<td><a class="btn btn-info" href="/saving/edit/<?= $saving->id ?>">Edit</a> <a class="btn btn-danger" href="/saving/delete/<?= $saving->id ?>">Delete</a></td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+</div>
