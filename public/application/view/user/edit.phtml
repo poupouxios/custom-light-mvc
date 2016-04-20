@@ -1,0 +1,51 @@
+<div class="row bottom-buffer">
+	<div class="col-sm-12">
+		<?php if(strlen($this->message) > 0): ?>
+			<div class="alert alert-success">
+				<?= $this->message ?>
+			</div>
+		<?php endif; ?>
+		<?php if(strlen($this->warningmessage) > 0): ?>
+			<div class="alert alert-danger">
+				<?= $this->warningmessage ?>
+			</div>
+		<?php endif; ?>
+
+		<form class="form-signin" action="/user/edit/<?= $this->user->id ?>" method="post">
+      <h2 class="form-signin-heading">Edit User <?= $this->user->id ?></h2>
+
+			<div class="form-group">
+		    <label for="title">Title</label>
+				<select name="title" class="form-control">
+					<option value="Mr" <?= $this->user->title == "Mr"? "selected": "" ?>>Mr</option>
+					<option value="Mrs" <?= $this->user->title == "Mrs"? "selected": "" ?>>Mrs</option>
+					<option value="Miss" <?= $this->user->title == "Miss"? "selected": "" ?>>Miss</option>
+					<option value="Sir" <?= $this->user->title == "Sir"? "selected": "" ?>>Sir</option>
+					<option value="Lord" <?= $this->user->title == "Lord"? "selected": "" ?>>Lord</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+		    <label for="firstname">First name</label>
+		    <input type="text" id="firstname" name="firstname" value="<?= $this->user->firstname ?>" class="form-control" placeholder="First name" required="" autofocus="">
+			</div>
+
+			<div class="form-group">
+		    <label for="surname">Surname</label>
+		    <input type="text" id="surname" name="surname" value="<?= $this->user->surname ?>" class="form-control" placeholder="Surname" required="" autofocus="">
+			</div>
+
+			<div class="form-group">
+		    <label for="telephone">Telephone</label>
+		    <input type="number" id="telephone" name="telephone" value="<?= $this->user->telephone ?>" class="form-control" placeholder="Telephone" required="" autofocus="">
+			</div>
+
+			<div class="form-group">
+		    <label for="email">Email</label>
+		    <input type="email" id="email" name="email" value="<?= $this->user->email ?>" class="form-control" placeholder="Email" required="" autofocus="">
+			</div>
+
+      <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+	</div>
+</div>

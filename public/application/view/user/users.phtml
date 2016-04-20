@@ -2,7 +2,7 @@
 	<div class="col-sm-12">
 		<h1>Users</h1>
 		<p>
-			<a class="btn btn-info" href="/user/add">Add User</a>
+			<a class="btn btn-success" href="/user/add">Add User</a>
 		</p>
 		<table class="table table-striped">
 			<thead>
@@ -10,6 +10,7 @@
 					<?php foreach($this->attributes as $attribute): ?>
 						<th><?= $attribute ?></th>
 					<?php endforeach; ?>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,6 +24,7 @@
 						<td><?= $user->email ?></td>
 						<td><?= $user->created_at ?></td>
 						<td><?= $user->updated_at ?></td>
+						<td><a class="btn btn-info" href="/user/edit/<?= $user->id ?>">Edit</a>  <a class="btn btn-danger" href="/user/delete/<?= $user->id ?>">Delete</a></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>

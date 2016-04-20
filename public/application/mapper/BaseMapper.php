@@ -22,6 +22,17 @@
 			return str_replace("Mapper","Model",get_called_class());
 		}
 
+		public function delete(){
+			if(isset($this->model->id)){
+				$delete_record = new Delete();
+				$delete_record->fromTable($this->table_name)
+											->where(["id = :record_id"])
+											->withData(["record_id" => $this->model->id]);
+
+				$delete_record->execute();
+			}
+		}
+
 		public function save(){
 			$strQuery = "";
 			$id = $this->model->id;

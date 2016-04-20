@@ -17,19 +17,22 @@ class Bootstrap
 			$urlArray = array();
 			$urlArray = explode("/",$this->request);
 
-			if(!isset($urlArray[0])){
+			if(!isset($urlArray[0]) || strlen($urlArray[0]) == 0){
 				$view = new BaseView();
 				return $view->getContentView("home.html");
 			}
 			$controller = $urlArray[0];
 			array_shift($urlArray);
-			$action = explode("?",$urlArray[0]);
-			if(isset($action[1])){
-    		$queryString = array($action[1]);
-      }else{
-        $queryString = array();
-      }
 
+			$action = $urlArray[0];
+			array_shift($urlArray);
+			
+      $queryString = array();
+			while(isset($urlArray[0])){
+	  		$queryString[] = $urlArray[0];
+				array_shift($urlArray);
+	    }
+		
 			$controllerName = $controller;
 			$controller = ucwords($controller);
 			$model = rtrim($controller, 's')."Model";
@@ -38,12 +41,12 @@ class Bootstrap
 
 			if (class_exists($model))
 			{
-        //echo $model."<br/>".$controller."<br/>".$action[0]."<br/>",print_r($queryString);
+        //echo $model."<br/>".$controller."<br/>".$action."<br/>".print_r($queryString);
 				$dispatch = new $controller();
 			}
 
-			if ((int)method_exists($controller, $action[0])) {
-				return call_user_func_array(array($dispatch,$action[0]),$queryString);
+			if ((int)method_exists($controller, $action)) {
+				return call_user_func_array(array($dispatch,$action),$queryString);
 			} else {
 				return "";
 			}

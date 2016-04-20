@@ -42,6 +42,7 @@ function stb_autoloader($class_name) {
 	FILESYSTEM_PATH.'/application/model/',
 	FILESYSTEM_PATH.'/application/mapper/',
 	FILESYSTEM_PATH.'/application/controller/',
+	FILESYSTEM_PATH.'/application/helper/',
 	FILESYSTEM_PATH.'/application/database/'];
 
 	foreach ($classesDir as $directory) {   

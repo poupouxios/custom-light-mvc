@@ -2,7 +2,7 @@
 	<div class="col-sm-12">
 		<h1>Expenses</h1>
 		<p>
-			<a class="btn btn-info" href="/expense/add">Add Expense</a>
+			<a class="btn btn-success" href="/expense/add">Add Expense</a>
 		</p>
 		<table class="table table-striped">
 			<thead>
@@ -10,13 +10,14 @@
 					<?php foreach($this->attributes as $attribute): ?>
 						<th><?= $attribute ?></th>
 					<?php endforeach; ?>
+						<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php foreach($this->expenses as $expense): ?>
 					<tr>
 						<td><?= $expense->id ?></td>
-						<td><?= $expense->value ?></td>
+						<td>&euro;<?= number_format($expense->expense_value,2) ?></td>
 						<td><?= $expense->comment ?></td>
 						<td><?php
 							$user = UserModel::getMapper()->findOneBy("id",$expense->user_id);
@@ -26,6 +27,7 @@
 						?></td>
 						<td><?= $expense->created_at ?></td>
 						<td><?= $expense->updated_at ?></td>
+						<td><a class="btn btn-info" href="/expense/edit/<?= $expense->id ?>">Edit</a> <a class="btn btn-danger" href="/expense/delete/<?= $expense->id ?>">Delete</a></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>

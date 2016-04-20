@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="col-sm-12">
+		<?php if(strlen($this->warningmessage) > 0): ?>
+			<div class="alert alert-danger">
+				<?= $this->warningmessage ?>
+			</div>
+		<?php endif; ?>
+		<?php if(strlen($this->message) > 0): ?>
+			<div class="alert alert-success">
+				<?= $this->message ?>
+			</div>
+		<?php endif; ?>
+		<a href="/expenses/view" title="Back to Expenses">Back to expenses</a>
+	</div>
+</div>

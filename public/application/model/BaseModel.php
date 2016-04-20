@@ -35,9 +35,19 @@
 			return $object;
 		}
 
-		public function setAttributes($data){
+		public function updateValues($data){
+			$called_class = get_called_class();
 			foreach($data as $key=>$value){
-				if(isset($this->attributes[$key])){
+				if(isset($called_class::$attributes[$key])){
+					$this->$key = $value;
+				}
+			}
+		}
+
+		public function setAttributes($data){
+			$called_class = get_called_class();
+			foreach($data as $key=>$value){
+				if(isset($called_class::$attributes[$key])){
 					$this->attributes[$key] = $value;
 				}
 			}

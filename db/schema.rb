@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418214755) do
+ActiveRecord::Schema.define(version: 20160420195513) do
+
+  create_table "expenses", force: :cascade do |t|
+    t.integer  "user_id",       limit: 4
+    t.float    "expense_value", limit: 24
+    t.text     "comment",       limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "expenses", ["user_id"], name: "index_expenses_on_user_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "title",      limit: 255
