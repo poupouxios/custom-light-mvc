@@ -32,7 +32,7 @@ As you will see the project doesn't have too much. Its just a simple web applica
 
 The components that the project has are:
 
-* **Custom MVC design** (**in progress to get validations in place**)
+* **Custom MVC design**
 
   This custom MVC has models, mappers, controllers, helpers and views. The model structure is as below:
   ```php
@@ -118,7 +118,7 @@ The components that the project has are:
   
   Helpers are mostly going to be used for reusing code. Currently only the BaseHelper exist which has the method `debugMessage($message)` which renders the message in a `pre tag` to be more readable.
 
-* **Custom ORM design** (**in progress to get it use more complex queries**)
+* **Custom ORM design**
 
   The Custom ORM design is abstracting the complexity of the PDO binding variables and offers through method chaining a better understanding to the developer of what happens. Currently it supports simple queries with where clause. 
   
@@ -189,11 +189,18 @@ The components that the project has are:
 
   The above will create the table users with the proper fields. The self.down purpose is if a migration was unecessary or you mistyped something and you want to rollback to remove that field or table.
 
-* **Custom Seed data** - (**in progress to get it working**)
+* **Custom Seed data**
  
   The idea of the seed data came out at work where some content on a back end system needed to be deployed and set automatically on review and production servers. 
 
   Currently there is the BaseSeedData.php which is an abstract class that has some unimplemented methods and some implemented ones. You can extend that BaseSeedData and implement the two methods that are necessary to create or update a specific content.
+  
+  There is a `seed.php` file that sits inside the `db` folder and you run that with the correct environment eg.
+  
+  ```script
+    APPLICATION_ENV=local php seed.php
+  ```
+  The script will parse the `db/seed-data/` folder and check each class if its being executed in order to not execute it again. There is a table in the database called `seed_migrations`, which stores the `class_name` being executed and what the timestamps.
   
 * **Grunt and npm to watch and generate minified CSS files from less files**
 * **[Twitter Bootstrap 3](http://getbootstrap.com/)**
@@ -234,6 +241,9 @@ Some of the above where developed as I was working in [Llama Digital](http://www
 
 ## TODO
 
+* Add validations
+* Add more complex queries in the Custom ORM
+* Add some seed data to demonstrate how it works
 * incorporate an Application Error Reporting
 * add more complicate Behat tests
 
