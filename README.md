@@ -204,7 +204,7 @@ The components that the project has are:
   ```script
     cd public && APPLICATION_ENV=local php ../db/seed.php create new_user
   ``` 
-  * **execute**: It parses the `db/seed-data/` folder and check each class if its being executed in order to not execute it again. There is a table in the database called `seed_migrations`, which stores the `class_name` being executed and what the timestamps.
+  * **execute**: It parses the `db/seed-data/` folder and check each class if its being executed in order to not execute it again. There is a table in the database called `seed_migrations`, which stores the `class_name` being executed and the timestamps.
   ```script
     cd public && APPLICATION_ENV=local php ../db/seed.php execute
   ``` 
