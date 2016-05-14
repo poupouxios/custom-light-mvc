@@ -3,7 +3,7 @@
 	class SeedMigrationMapper extends BaseMapper{
 
 		public function __construct(){
-			$this->table_name = "seed_migration";
+			$this->table_name = "seed_migrations";
 		}
 
 	}

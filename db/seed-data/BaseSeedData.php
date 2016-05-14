@@ -1,10 +1,8 @@
 <?php
 	
-	abstract class BaseSeedData{
-
-		abstract public function create();
-
-		abstract public function update();
+	use \SeedDataInterface as SeedDataInterface;
+	
+	abstract class BaseSeedData implements SeedDataInterface{
 
 		public function markMigration(){
 			$data = [];
