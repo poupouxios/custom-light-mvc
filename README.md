@@ -193,14 +193,24 @@ The components that the project has are:
  
   The idea of the seed data came out at work where some content on a back end system needed to be deployed and set automatically on review and production servers. 
 
-  Currently there is the BaseSeedData.php which is an abstract class that has some unimplemented methods and some implemented ones. You can extend that BaseSeedData and implement the two methods that are necessary to create or update a specific content.
+  The structure of the Seed module is:
+  * **SeedDataInterface**: An interface which has the create and update method
+  * **BaseSeedData**:  A base abstract class which implements the interface and adds 2 extra methods called markMigration to insert in the database when the migration finishes successfully and a getCurrentDateForSql to return the current date
+  * **Seed_20160514171050_New_User**: one of the example files that extend the BaseSeedData and implemented the created method by creating a new user and saving in the database
   
-  There is a `seed.php` file that sits inside the `db` folder and you run that with the correct environment eg.
-  
+  The`seed.php` file is responsible for two type of actions:
+  * **create**: create a new migration file by providing the name. It adds the necessary methods that need to be implemented.
+  eg.
   ```script
-    APPLICATION_ENV=local php seed.php
-  ```
-  The script will parse the `db/seed-data/` folder and check each class if its being executed in order to not execute it again. There is a table in the database called `seed_migrations`, which stores the `class_name` being executed and what the timestamps.
+    cd public && APPLICATION_ENV=local php ../db/seed.php create new_user
+  ``` 
+  * **execute**: It parses the `db/seed-data/` folder and check each class if its being executed in order to not execute it again. There is a table in the database called `seed_migrations`, which stores the `class_name` being executed and what the timestamps.
+  ```script
+    cd public && APPLICATION_ENV=local php ../db/seed.php execute
+  ``` 
+  
+  The APPLICATION_ENV defines in which environment the seed data will be executed and saved. In the above examples they will be stored in the local version. If we wanted to create the seed data in testing environment, we will have to use APPLICATION_ENV=testing.
+  
   
 * **Grunt and npm to watch and generate minified CSS files from less files**
 * **[Twitter Bootstrap 3](http://getbootstrap.com/)**
