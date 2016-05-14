@@ -8,8 +8,8 @@ class UserMapper extends BaseMapper{
 	public function findOneByEmail($email){
 		$select = new Select();
 		$result = $select->fromTable($this->table_name)
-									->where(array("islive = :islive"," AND email = :email"))
-									->withData(array("islive" => 1,"email" => $email))
+									->where(array("email = :email"))
+									->withData(array("email" => $email))
 									->execute();
 
 		$user = null;
