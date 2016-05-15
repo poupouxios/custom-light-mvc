@@ -4,21 +4,19 @@
   $baseDirectory = FILESYSTEM_PATH.'/../db/seed-data/';
   require_once ($baseDirectory."SeedDataInterface.php");
   require_once ($baseDirectory."BaseSeedData.php");
+  require_once ($baseDirectory."ExtraSeedMethods.php");
   $type = $argv[1];
 
   switch($type){
     case "execute":
-      $seed_files = scandir($baseDirectory);
+      $seed_files = scandir($baseDirectory."seed-files/");
       foreach($seed_files as $seed_file){
-        if(strstr($seed_file,".php") !== FALSE 
-        && strstr($seed_file,"BaseSeedData") === FALSE
-        && strstr($seed_file,"SeedDataInterface") === FALSE
-        ){
+        if(strstr($seed_file,".php") !== FALSE){
           $class_name = str_replace(".php","",$seed_file);
           $seed_migrationModel = SeedMigrationModel::getMapper()->findOneBy("class_name",$class_name);
           if(!$seed_migrationModel){
             echo "Executing $class_name\n";
-            require_once $baseDirectory.$seed_file;
+            require_once $baseDirectory."seed-files/".$seed_file;
             try{
               $seed_data = new $class_name();
               $seed_data->create();
@@ -42,7 +40,7 @@
         $date = new DateTime();
         $full_date = $date->format("YmdHis");
         $seed_class_name = "Seed_".$full_date."_".str_replace(" ","",ucwords($class_name,"_"));
-        $php_file = fopen($baseDirectory.$seed_class_name.".php", "w");
+        $php_file = fopen($baseDirectory."seed-files/".$seed_class_name.".php", "w");
         $content = "<?php\n
   class $seed_class_name extends BaseSeedData{\n
     public function create(){}\n
