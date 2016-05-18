@@ -15,7 +15,7 @@
       $expenses = ExpenseModel::getMapper()->findAllExpensesByUserId($this->id);
       $total_expenses = 0;
       foreach($expenses as $expense){
-        $total_expenses += floatval($expense->expense_value);
+        $total_expenses += floatval(abs($expense->expense_value));
       }
       return abs($total_expenses);
     }

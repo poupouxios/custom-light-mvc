@@ -58,7 +58,7 @@
 				<?php foreach($this->user_expenses as $expense): ?>
 					<tr>
 						<td><?= $expense->id ?></td>
-						<td>&pound;<?= number_format($expense->expense_value,2) ?></td>
+						<td>&pound;<?= number_format(abs($expense->expense_value),2) ?></td>
 						<td><?= $expense->comment ?></td>
 						<td><?php
 							$user = UserModel::getMapper()->findOneBy("id",$expense->user_id);
