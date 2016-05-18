@@ -253,7 +253,6 @@ Some of the above where developed as I was working in [Llama Digital](http://www
 
 * Add validations
 * Add more complex queries in the Custom ORM
-* Add some seed data to demonstrate how it works
 * incorporate an Application Error Reporting
 * add more complicate Behat tests
 
