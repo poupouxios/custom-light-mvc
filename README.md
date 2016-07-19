@@ -195,22 +195,22 @@ The components that the project has are:
 
   The structure of the Seed module is:
   * **SeedDataInterface**: An interface which has the create and update method
-  * **BaseSeedData**:  A base abstract class which implements the interface and adds 2 extra methods called markMigration to insert in the database when the migration finishes successfully and a getCurrentDateForSql to return the current date
+  * **BaseSeedData**:  A base abstract class which implements the interface and adds 2 extra methods called markMigration to insert in the database when the migration finishes successfully
   * **Seed_20160514171050_New_User**: one of the example files that extend the BaseSeedData and implemented the created method by creating a new user and saving in the database
+  * **ExtraSeedMethods**: its a trait that has getCurrentDateForSql method that can be re-used anywhere is needed in a seed file. 
   
   The`seed.php` file is responsible for two type of actions:
   * **create**: create a new migration file by providing the name. It adds the necessary methods that need to be implemented.
   eg.
   ```script
-    cd public && APPLICATION_ENV=local php ../db/seed.php create new_user
+    cd ~/source/public && APPLICATION_ENV=local php ../db/seed.php create new_user
   ``` 
-  * **execute**: It parses the `db/seed-data/` folder and check each class if its being executed in order to not execute it again. There is a table in the database called `seed_migrations`, which stores the `class_name` being executed and the timestamps.
+  * **execute**: It parses the `db/seed-data/seed-files/` folder and check each class if its being executed in order to not execute it again. There is a table in the database called `seed_migrations`, which stores the `class_name` being executed and the timestamps.
   ```script
-    cd public && APPLICATION_ENV=local php ../db/seed.php execute
+    cd ~/source/public && APPLICATION_ENV=local php ../db/seed.php execute
   ``` 
   
   The APPLICATION_ENV defines in which environment the seed data will be executed and saved. In the above examples they will be stored in the local version. If we wanted to create the seed data in testing environment, we will have to use APPLICATION_ENV=testing.
-  
   
 * **Grunt and npm to watch and generate minified CSS files from less files**
 * **[Twitter Bootstrap 3](http://getbootstrap.com/)**
