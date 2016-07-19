@@ -25,7 +25,7 @@ The module requires some essential components to work:
 * Assuming you installed all the requirements from above, you can run `vagrant up`
 * The `vagrant up` will install all the necessary dependencies in order to have a ready project to play
 * After the provision of the VM finishes, run `vagrant ssh` to get inside the VM
-* Execute the commands `bundle exec rake db:migrate DB=development` and `bundle exec rake db:migrate DB=testing`. This will run all the migrations to generate the tables in the database.
+* Execute the commands `bundle exec rake db:migrate RAILS_ENV=development` and `bundle exec rake db:migrate RAILS_ENV=testing`. This will run all the migrations to generate the tables in the database.
 * After doing all the above, you should be able to access the web appication at `http://192.168.69.95`.
 
 As you will see the project doesn't have too much. Its just a simple web application that add/edit/delete expenses,users and savings. 
